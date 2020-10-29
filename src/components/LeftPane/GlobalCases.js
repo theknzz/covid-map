@@ -3,7 +3,7 @@ import styled from "@emotion/styled";
 
 const Container = styled.div`
     background-color: #222222;
-    color: white;
+    color: #bdbdbd;
     width: 100%;
     padding: 20px 0px;
     display: flex;

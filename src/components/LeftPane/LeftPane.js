@@ -3,6 +3,7 @@ import styled from "@emotion/styled";
 import { connect } from 'react-redux'
 import GlobalCases from "./GlobalCases";
 import CountryCases from "../Containers/CountryCases";
+import Updated from "./Updated";
 
 const Container = styled.div`
     flex: 0.7;
@@ -18,11 +19,11 @@ const Container = styled.div`
 `
 
 const LeftPane = ({ global, world }) => {
-    console.log(global)
     return (
         <Container>
             <GlobalCases nr={global.infected} />
             <CountryCases world={world} color={'red'}/>
+            <Updated global={global}/>
         </Container>
     );
 }

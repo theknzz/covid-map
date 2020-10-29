@@ -1,8 +1,9 @@
 import React, { memo, useEffect } from "react";
 import { rounded } from '../../functions/round'
 import { connect } from 'react-redux'
-import {getGlobalInfo, getMapInfo, getWorldInfo} from "../../store/actions/infoActions";
+import { getGlobalInfo, getMapInfo, getWorldInfo } from "../../store/actions/infoActions";
 import styled from "@emotion/styled";
+import { parseCountryToJsx } from "../../functions/parseCountryToJsx";
 import {
     ZoomableGroup,
     ComposableMap,
@@ -44,12 +45,11 @@ const MapChart = ({ setTooltipContent, getInfo, country, getWorld, getGlobal }) 
                                     key={geo.rsmKey}
                                     geography={geo}
                                     onClick={() => {
-                                        const { NAME } = geo.properties;
-                                        // getNumberOfInfected(NAME);
-                                        getInfo(NAME);
+                                        setTooltipContent(parseCountryToJsx(country));
                                     }}
                                     onMouseEnter={() => {
                                         const { NAME, POP_EST } = geo.properties;
+                                        getInfo(NAME);
                                         setTooltipContent(`${NAME} — ${rounded(POP_EST)}`);
                                     }}
                                     onMouseLeave={() => {

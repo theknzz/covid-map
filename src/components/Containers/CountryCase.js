@@ -20,11 +20,10 @@ const NrCases = styled.div`
 
 const CountryName = styled.div`
     flex: 2;
-    color: white;
+    color: #bdbdbd;
 `
 
 const CountryCase = ({ name, cases, color }) => {
-    console.log(color==='red')
     return (
         <Row>
             <NrCases color={color}>{cases}</NrCases>

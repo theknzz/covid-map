@@ -3,7 +3,7 @@ import styled from '@emotion/styled'
 
 const Container = styled.div`
     background-color: #222222;
-    color: white;
+    color: #bdbdbd;
     width: 100%;
     padding: 30px 0px;
     display: flex;
@@ -18,7 +18,6 @@ const Container = styled.div`
 `
 
 const GlobalInfo = ({ global }) => {
-    console.log(global)
     return (
         <Container>
             Global Info

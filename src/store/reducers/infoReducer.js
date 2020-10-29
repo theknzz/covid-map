@@ -27,13 +27,11 @@ export const infoReducer = (state = initialData, action) => {
                 error: action.data,
             };
         case GetWorldInfoSuccess:
-            const obj = {
+            return {
                 ...state,
                 world: action.data,
                 error: '',
             };
-            console.log(obj)
-            return obj;
         case GetWorldInfoError:
             return {
                 ...state,

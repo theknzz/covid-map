@@ -9,7 +9,7 @@ const Container = styled.div`
     flex-wrap: wrap;
     align-items: center;
     overflow-y: auto;
-    color: white;
+    color: #bdbdbd;
     justify-content: center;
     background-color: #222222;
     margin-top: 10px;
