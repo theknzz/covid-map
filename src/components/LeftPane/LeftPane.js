@@ -22,7 +22,7 @@ const LeftPane = ({ global, world }) => {
     return (
         <Container>
             <GlobalCases nr={global.infected} />
-            <CountryCases world={world} color={'red'}/>
+            <CountryCases append={''} world={world} color={'red'}/>
             <Updated global={global}/>
         </Container>
     );

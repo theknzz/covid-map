@@ -37,7 +37,7 @@ const MapChart = ({ setTooltipContent, getInfo, country, getWorld, getGlobal }) 
     return (
         <MapContainer>
             <ComposableMap className={'map'} data-tip="" projectionConfig={{ scale: 50 }} width={500} height={500}>
-                <ZoomableGroup center={[20, 195]} zoom={2.6}>
+                <ZoomableGroup center={[20, 180]} zoom={4}>
                     <Geographies geography={geoUrl}>
                         {({ geographies }) =>
                             geographies.map(geo => (
@@ -50,7 +50,7 @@ const MapChart = ({ setTooltipContent, getInfo, country, getWorld, getGlobal }) 
                                     onMouseEnter={() => {
                                         const { NAME, POP_EST } = geo.properties;
                                         getInfo(NAME);
-                                        setTooltipContent(`${NAME} — ${rounded(POP_EST)}`);
+                                        setTooltipContent(`${NAME}`);
                                     }}
                                     onMouseLeave={() => {
                                         setTooltipContent("");

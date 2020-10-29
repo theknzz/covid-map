@@ -19,7 +19,7 @@ const Container = styled.div`
     }
 `
 
-const CountryCases = ({ world, color }) => {
+const CountryCases = ({ world, color, append }) => {
 
     const countryCases = world.map(country => {
         return <CountryCase color={color} key={country.name} name={country.name} cases={country.infected} />
@@ -27,7 +27,7 @@ const CountryCases = ({ world, color }) => {
 
     return (
         <Container>
-            <h5>Cases by Countries</h5>
+            <h5>Cases {append} by Countries</h5>
             {countryCases}
         </Container>
     )

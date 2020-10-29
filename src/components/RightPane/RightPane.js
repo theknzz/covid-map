@@ -20,7 +20,7 @@ const RightPane = ({ global, world }) => {
     return (
         <Container>
             <GlobalInfo global={global}/>
-            <CountryCases world={world} color={'green'}/>
+            <CountryCases append={'recovered'} world={world} color={'green'}/>
             {/*<Graph />*/}
         </Container>
     );

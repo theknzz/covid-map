@@ -19,6 +19,7 @@ const Title = styled.h1`
     justify-content: center;
 `
 
+
 function App() {
     const [content, setContent] = useState('');
     return (
