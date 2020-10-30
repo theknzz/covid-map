@@ -1,7 +1,6 @@
 import React, { memo, useEffect } from "react";
-import { rounded } from '../../functions/round'
 import { connect } from 'react-redux'
-import { getGlobalInfo, getMapInfo, getWorldInfo } from "../../store/actions/infoActions";
+import { getGlobalInfo, getMapInfo, getWorldInfo, portugalInfo } from "../../store/actions/infoActions";
 import styled from "@emotion/styled";
 import { parseCountryToJsx } from "../../functions/parseCountryToJsx";
 import {
@@ -10,6 +9,7 @@ import {
     Geographies,
     Geography
 } from "react-simple-maps";
+import {useTheme} from "emotion-theming";
 
 
 const geoUrl =
@@ -21,21 +21,23 @@ const MapContainer = styled.div`
     display: flex;
     justify-content: center;
     flex-flow: column wrap;
-    border: 1px solid #525252;
-    background-color: #010f1a;
+    border: 1px solid ${props => props.theme.border};
+    background-color: ${props => props.theme.mapBackground};
     margin: 5px;
 `
 
-const MapChart = ({ setTooltipContent, getInfo, country, getWorld, getGlobal }) => {
+const MapChart = ({ setTooltipContent, getInfo, country, getWorld, getGlobal, getPortugal, portugal }) => {
+
+    const theme = useTheme();
 
     useEffect( () => {
         getWorld();
         getGlobal();
-    }, []);
+        getPortugal();
+    }, [ ]);
 
-    console.log('country: ', country);
     return (
-        <MapContainer>
+        <MapContainer theme={theme}>
             <ComposableMap className={'map'} data-tip="" projectionConfig={{ scale: 50 }} width={500} height={500}>
                 <ZoomableGroup center={[20, 180]} zoom={4}>
                     <Geographies geography={geoUrl}>
@@ -57,8 +59,8 @@ const MapChart = ({ setTooltipContent, getInfo, country, getWorld, getGlobal }) 
                                     }}
                                     style={{
                                         default: {
-                                            fill: "#2a2a28",
-                                            outline: "none"
+                                            fill: theme.mapFill,
+                                            outline: "none",
                                         },
                                         hover: {
                                             fill: "#F53",
@@ -84,12 +86,14 @@ const mapDispatchToProps = (dispatch) => {
         getInfo: (country) => dispatch(getMapInfo(country)),
         getWorld: () => dispatch(getWorldInfo()),
         getGlobal: () => dispatch(getGlobalInfo()),
+        getPortugal: () => dispatch(portugalInfo())
     }
 }
 
 const mapStateToProps = (state) => {
     return {
         country: state.info.country,
+        portugal: state.info.portugal,
     }
 }
 

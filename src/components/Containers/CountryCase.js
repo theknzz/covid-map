@@ -1,10 +1,11 @@
 import React from 'react'
 import styled from "@emotion/styled";
+import {useTheme} from "emotion-theming";
 
 const Row = styled.div`
     display: flex;
     padding: 3px;
-    border-bottom: 1px solid #ccc;
+    border-bottom: 1px solid ${props => props.theme.border};
     width: 100%;
 `
 
@@ -20,14 +21,15 @@ const NrCases = styled.div`
 
 const CountryName = styled.div`
     flex: 2;
-    color: #bdbdbd;
+    color: ${props => props.theme.text};
 `
 
 const CountryCase = ({ name, cases, color }) => {
+    const theme = useTheme();
     return (
-        <Row>
+        <Row theme={theme}>
             <NrCases color={color}>{cases}</NrCases>
-            <CountryName>{name}</CountryName>
+            <CountryName theme={theme}>{name}</CountryName>
         </Row>
     );
 }

@@ -3,7 +3,10 @@ import {
     GetCountryInfoError,
     GetWorldInfoSuccess,
     GetWorldInfoError,
-    GetGlobalInfoSuccess, GetGlobalInfoError
+    GetGlobalInfoSuccess,
+    GetGlobalInfoError,
+    PortugalServerDown,
+    GetPortugalInfoSuccess,
 } from "../actionList";
 import { parseCountry } from "../../functions/parseCountry";
 import moment from "moment";
@@ -59,5 +62,31 @@ export const getGlobalInfo = () => {
                 console.error(err)
                 dispatch({type: GetGlobalInfoError, data: err})
             })
+    }
+}
+
+export const portugalInfo = ()  => {
+    return (dispatch, getState) => {
+        fetch('https://covid19-api.vost.pt/Requests/get_status')
+            .then( res => res.json()
+                .then( resp => {
+                    if (resp.status === "Server is OK") {
+                        fetch('https://covid19-api.vost.pt/Requests/get_full_dataset')
+                            .then( res => res.json()
+                                .then(resp => {
+                                    dispatch({ type: GetPortugalInfoSuccess, data: {
+                                            days: resp.data,
+                                            infected: resp.confirmados,
+                                            recovered: resp.recuperados,
+                                            infected_m: resp.confirmados_m,
+                                            infected_f: resp.confirmados_f,
+                                        }})
+                                }))
+                            .catch()
+                    }
+                    dispatch({ type: PortugalServerDown })
+                })
+            )
+            .catch()
     }
 }

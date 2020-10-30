@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from '@emotion/styled'
+import {useTheme} from "emotion-theming";
 
 const Container = styled.div`
     flex: 1;
@@ -7,8 +8,9 @@ const Container = styled.div`
     flex-flow: column wrap;
     align-items: center;
     margin-top: 20px;
-    color: #bdbdbd;
-    border: 1px solid #525252;
+    background-color: ${props =>props.theme.boxBackground};
+    color: ${props =>props.theme.text};
+    border: 1px solid ${props =>props.theme.border};
     width: 100%;
     padding: 10px 0px;
     & > h3 {
@@ -21,8 +23,9 @@ const Container = styled.div`
 `
 
 const Updated = ({ global }) => {
+    const theme = useTheme();
     return (
-        <Container>
+        <Container theme={theme}>
             <a>Updated</a>
             <h3>{global.updatedAt}</h3>
         </Container>

@@ -7,3 +7,6 @@ export const GetWorldInfoError = 'GET_WORLD_INFO_ERROR'
 
 export const GetGlobalInfoSuccess = 'GET_GLOBAL_INFO_SUCCESS'
 export const GetGlobalInfoError = 'GET_GLOBAL_INFO_ERROR'
+
+export const PortugalServerDown = 'SERVER_DOWN'
+export const GetPortugalInfoSuccess = 'GET_PORTUGAL_INFO_SUCCESS'

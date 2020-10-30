@@ -3,7 +3,10 @@ import {
     GetCountryInfoError,
     GetWorldInfoSuccess,
     GetWorldInfoError,
-    GetGlobalInfoSuccess, GetGlobalInfoError
+    GetGlobalInfoSuccess,
+    GetGlobalInfoError,
+    GetPortugalInfoSuccess,
+    PortugalServerDown,
 } from "../actionList";
 
 const initialData = {
@@ -11,6 +14,7 @@ const initialData = {
     world: [{}],
     error: '',
     global: {},
+    portugal: {},
 }
 
 export const infoReducer = (state = initialData, action) => {
@@ -47,6 +51,17 @@ export const infoReducer = (state = initialData, action) => {
             return {
                 ...state,
                 error: action.data,
+            }
+        case GetPortugalInfoSuccess:
+            return {
+                ...state,
+                portugal: action.data,
+                error: '',
+            }
+        case PortugalServerDown:
+            return {
+                ...state,
+                error: 'Portugal server is longer active',
             }
         default:
             return state;
