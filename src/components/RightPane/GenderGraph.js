@@ -25,17 +25,22 @@ const GraphWrapper = styled.div`
         width: 100vw;
         overflow: hidden;
     }
-    flex: 3;
+    flex: 4;
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    justify-content: center;
+    & > canvas {
+        width: auto;
+        height: auto;
+    }
 `
 const Title = styled.div`
-    flex: 0.5;
-    display: flex;
-    flex-flow: column;
-    justify-content: center;
+    flex: 1;
     color: ${props =>props.theme.text};
     margin-top: 6px;
     > h5 {
-        margin: 20px !important;
+        margin: 10px !important;
     }
 `
 
@@ -103,7 +108,7 @@ const GenderGraph = ({ portugal }) => {
         <Container theme={theme}>
             <Title theme={theme}><h5>Gender Graph - Portugal</h5></Title>
             <GraphWrapper>
-                <canvas id={'genderGraph'} width={300} height={250}/>
+                <canvas id={'genderGraph'} width={'auto'} height={'auto'}/>
             </GraphWrapper>
         </Container>
     );
