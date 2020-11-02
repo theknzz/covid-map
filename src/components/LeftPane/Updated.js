@@ -3,7 +3,6 @@ import styled from '@emotion/styled'
 import {useTheme} from "emotion-theming";
 
 const Container = styled.div`
-    flex: 1;
     display: flex;
     flex-flow: column wrap;
     align-items: center;

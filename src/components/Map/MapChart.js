@@ -20,6 +20,7 @@ const MapContainer = styled.div`
     flex: 2;
     display: flex;
     justify-content: center;
+    min-width: 30vw;
     flex-flow: column wrap;
     border: 1px solid ${props => props.theme.border};
     background-color: ${props => props.theme.mapBackground};
